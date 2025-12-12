@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishal Shah — Data • Analytics • AI Product</title>
+    <style>
+        :root {
+            --color-bg-dark: #0a0e27;
+            --color-bg-secondary: #111633;
+            --color-bg-tertiary: #1a1f3a;
+            --color-primary: #00d9ff;
+            --color-primary-dark: #00b8d4;
+            --color-accent: #ff006e;
+            --color-accent-light: #ff4d8f;
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #a8b2d1;
+            --color-text-tertiary: #6b7494;
+            --gradient-primary: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            --gradient-accent: linear-gradient(135deg, #ff006e 0%, #ff4d8f 100%);
+            --gradient-dark: linear-gradient(135deg, #111633 0%, #0a0e27 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--color-bg-dark);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(0, 217, 255, 0.6);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* ===== HEADER/NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 15px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        #hero {
+            padding-top: 120px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 1) 0%, rgba(17, 22, 51, 0.5) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 110, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            animation: slideInLeft 1s ease;
+            letter-spacing: -2px;
+        }
+
+        .hero-text h1 .highlight {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s both;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--color-bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInRight 1s ease;
+        }
+
+        .profile-photo {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(255, 0, 110, 0.2));
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 50px rgba(0, 217, 255, 0.3);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-photo input {
+            display: none;
+        }
+
+        .photo-placeholder {
+            color: var(--color-text-tertiary);
+            text-align: center;
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .profile-photo {
+                max-width: 300px;
+                height: 300px;
+                font-size: 60px;
+            }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        #about {
+            background: var(--color-bg-secondary);
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .section-title .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .strength-card {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strength-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .strength-card:hover::before {
+            left: 100%;
+        }
+
+        .strength-card:hover {
+            border-color: var(--color-primary);
+            background: rgba(26, 31, 58, 0.8);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .strength-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        .strength-card p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        #projects {
+            background: linear-gradient(135deg, rgba(10, 14, 39, 1) 0%, rgba(17, 22, 51, 0.5) 100%);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(26, 31, 58, 0.7);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 25px 50px rgba(0, 217, 255, 0.2);
+            transform: translateY(-15px);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(255, 0, 110, 0.1));
+            padding: 25px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .project-type {
+            font-size: 12px;
+            color: var(--color-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .project-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-problem {
+            margin-bottom: 20px;
+        }
+
+        .project-problem h4 {
+            font-size: 13px;
+            color: var(--color-accent-light);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+        }
+
+        .project-problem p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            margin-bottom: 20px;
+        }
+
+        .project-tech h4 {
+            font-size: 12px;
+            color: var(--color-primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--color-primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .project-impact {
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        .project-impact h4 {
+            font-size: 12px;
+            color: var(--color-accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+        }
+
+        .impact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .impact-item {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .impact-item::before {
+            content: '✓';
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* ===== TECH STACK SECTION ===== */
+        #techstack {
+            background: var(--color-bg-secondary);
+        }
+
+        .tech-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .tech-category {
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            padding: 30px;
+            border-radius: 12px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .tech-category h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-item {
+            background: rgba(0, 217, 255, 0.08);
+            color: var(--color-text-secondary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 217, 255, 0.15);
+            font-size: 13px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .tech-item:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background: rgba(0, 217, 255, 0.15);
+        }
+
+        /* ===== SPEAKING SECTION ===== */
+        #speaking {
+            background: linear-gradient(135deg, rgba(10, 14, 39, 1) 0%, rgba(17, 22, 51, 0.5) 100%);
+        }
+
+        .speaking-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .speaking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .speaking-item {
+            background: rgba(26, 31, 58, 0.6);
+            border-left: 3px solid var(--color-primary);
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .speaking-item:hover {
+            background: rgba(26, 31, 58, 0.8);
+            border-left-color: var(--color-accent);
+            transform: translateX(10px);
+        }
+
+        .speaking-item h4 {
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .speaking-item p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        @media (max-width: 968px) {
+            .speaking-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== FOOTER / CTA ===== */
+        #cta {
+            background: rgba(26, 31, 58, 0.8);
+            border-top: 1px solid rgba(0, 217, 255, 0.15);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .cta-content h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.1s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        /* ===== UTILITY ===== */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.3), transparent);
+            margin: 60px 0;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER/NAV -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Vishal Shah</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#techstack">Tech</a></li>
+                    <li><a href="#speaking">Speaking</a></li>
+                    <li><a href="#cta">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        Blending <span class="highlight">Data,</span> <span class="highlight">Strategy</span> & <span class="highlight">AI</span> to Power Business Growth
+                    </h1>
+                    <p>
+                        A Data & Product professional transforming data into revenue opportunities, building intelligent workflows, and designing human-centered solutions that drive measurable impact.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToSection('#projects')">View Projects</button>
+                        <button class="btn btn-secondary" onclick="scrollToSection('#cta')">Get in Touch</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <label class="profile-photo">
+                        <img src="photo.PNG" alt="Vishal Shah - Data Analytics & AI Product Professional">
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">⭐ <span class="gradient-text">Core Strengths</span></h2>
+            
+            <div class="strengths-grid">
+                <div class="strength-card">
+                    <h3>📊 Data Visualization & BI</h3>
+                    <p>Power BI, Excel, QuickSight dashboards that transform complex data into actionable intelligence.</p>
+                </div>
+                <div class="strength-card">
+                    <h3>💰 Revenue & KPI Analytics</h3>
+                    <p>CAC, LTV, ROI, retention, churn, engagement metrics that drive revenue strategy.</p>
+                </div>
+                <div class="strength-card">
+                    <h3>🎯 GTM Strategy & Sales Insights</h3>
+                    <p>Partner performance analytics and go-to-market intelligence for data-driven decisions.</p>
+                </div>
+                <div class="strength-card">
+                    <h3>⚙️ Workflow Automation & Optimization</h3>
+                    <p>Process automation and efficiency improvements that save time and reduce manual work.</p>
+                </div>
+                <div class="strength-card">
+                    <h3>🧠 Predictive Modeling & ML</h3>
+                    <p>Advanced statistical models and machine learning solutions for forecasting and pattern detection.</p>
+                </div>
+                <div class="strength-card">
+                    <h3>🤖 AI/LLM Solutions</h3>
+                    <p>LangChain, Ollama, Hybrid Search systems enabling next-generation intelligent workflows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title"><span class="gradient-text">🏆 Portfolio Highlights</span></h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Analytics • Product • Strategy</div>
+                        <h3 class="project-title">Wildlife Health Intelligence Dashboard</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-problem">
+                            <h4>The Problem</h4>
+                            <p>Wildlife field teams lacked a unified dashboard for tracking health trends and disease prevalence.</p>
+                        </div>
+                        <div class="project-tech">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">Python</span>
+                            </div>
+                        </div>
+                        <div class="project-impact">
+                            <h4>Impact</h4>
+                            <div class="impact-items">
+                                <span class="impact-item">Reduced reporting time by 70%</span>
+                                <span class="impact-item">Adopted by 50+ stakeholders</span>
+                                <span class="impact-item">Proactive resource allocation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">RevOps • GTM Analytics</div>
+                        <h3 class="project-title">Event ROI & Revenue Analytics</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-problem">
+                            <h4>The Problem</h4>
+                            <p>Leadership lacked standardized KPIs to evaluate event success and customer acquisition.</p>
+                        </div>
+                        <div class="project-tech">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">KPI Frameworks</span>
+                            </div>
+                        </div>
+                        <div class="project-impact">
+                            <h4>Impact</h4>
+                            <div class="impact-items">
+                                <span class="impact-item">Improved budget planning</span>
+                                <span class="impact-item">Unified KPIs across agency</span>
+                                <span class="impact-item">Identified high-performing events</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Product • AI/LLM</div>
+                        <h3 class="project-title">AI Document Intelligence Assistant</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-problem">
+                            <h4>The Problem</h4>
+                            <p>Staff spent hours searching through policy and regulatory documents.</p>
+                        </div>
+                        <div class="project-tech">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">Ollama</span>
+                                <span class="tech-tag">ChromaDB</span>
+                            </div>
+                        </div>
+                        <div class="project-impact">
+                            <h4>Impact</h4>
+                            <div class="impact-items">
+                                <span class="impact-item">Saved 5+ hours per week per team</span>
+                                <span class="impact-item">Context-based Q&A capability</span>
+                                <span class="impact-item">Enabled informed decisions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">RevOps • Strategy</div>
+                        <h3 class="project-title">RevOps KPI & Forecasting Framework</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-problem">
+                            <h4>The Problem</h4>
+                            <p>Organization needed clearer forecasting models for revenue and customer trends.</p>
+                        </div>
+                        <div class="project-tech">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">SQL</span>
+                                <span class="tech-tag">BI Tools</span>
+                            </div>
+                        </div>
+                        <div class="project-impact">
+                            <h4>Impact</h4>
+                            <div class="impact-items">
+                                <span class="impact-item">Improved quarterly planning</span>
+                                <span class="impact-item">Standardized forecasting</span>
+                                <span class="impact-item">Better revenue driver understanding</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">ML Research • Product</div>
+                        <h3 class="project-title">Stock Market Intraday Analytics</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-problem">
+                            <h4>The Problem</h4>
+                            <p>Need for real-time pattern detection and volatility prediction in market data.</p>
+                        </div>
+                        <div class="project-tech">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">Stream Analytics</span>
+                            </div>
+                        </div>
+                        <div class="project-impact">
+                            <h4>Impact</h4>
+                            <div class="impact-items">
+                                <span class="impact-item">Daily model retraining pipeline</span>
+                                <span class="impact-item">HH/LL pattern detection</span>
+                                <span class="impact-item">Published research paper</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Applied Analytics • Predictive Modeling • Product</div>
+                        <h3 class="project-title">Chronic Wasting Disease Predictive Analytics</h3>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-problem">
+                            <h4>The Problem</h4>
+                            <p>Chronic Wasting Disease poses a growing threat to wildlife populations, requiring early detection and data-driven decision-making for conservation and public safety.</p>
+                        </div>
+                        <div class="project-tech">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Statistical Modeling</span>
+                                <span class="tech-tag">Time-Series Analysis</span>
+                                <span class="tech-tag">Power BI</span>
+                            </div>
+                        </div>
+                        <div class="project-impact">
+                            <h4>Impact</h4>
+                            <div class="impact-items">
+                                <span class="impact-item">Early identification of high-risk regions</span>
+                                <span class="impact-item">Improved resource allocation for wildlife management</span>
+                                <span class="impact-item">Data-driven policy and conservation strategy support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- TECH STACK SECTION -->
+    <section id="techstack">
+        <div class="container">
+            <h2 class="section-title">🔧 <span class="gradient-text">Tech Stack</span></h2>
+            
+            <div class="tech-categories">
+                <div class="tech-category">
+                    <h3>📊 Analytics</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Power BI</span>
+                        <span class="tech-item">Excel</span>
+                        <span class="tech-item">SQL</span>
+                        <span class="tech-item">QuickSight</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>🤖 AI/ML</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">Python</span>
+                        <span class="tech-item">Scikit-learn</span>
+                        <span class="tech-item">TensorFlow</span>
+                        <span class="tech-item">LangChain</span>
+                        <span class="tech-item">Ollama</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>🛠 Product & Tools</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">PRDs</span>
+                        <span class="tech-item">Roadmaps</span>
+                        <span class="tech-item">KPIs</span>
+                        <span class="tech-item">Figma</span>
+                        <span class="tech-item">User Research</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h3>💼 RevOps & Data</h3>
+                    <div class="tech-list">
+                        <span class="tech-item">KPI Frameworks</span>
+                        <span class="tech-item">Revenue Analytics</span>
+                        <span class="tech-item">Data Modeling</span>
+                        <span class="tech-item">Forecasting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SPEAKING SECTION -->
+    <section id="speaking">
+        <div class="container">
+            <h2 class="section-title">🎤 <span class="gradient-text">Speaking & Leadership</span></h2>
+            
+            <div class="speaking-content">
+                <div class="speaking-list">
+                    <div class="speaking-item">
+                        <h4>🏆 Conference Reviewer, NeurIPS</h4>
+                        <p>Served as a peer reviewer, evaluating research submissions in applied machine learning and data-driven methodologies, contributing to the quality and rigor of cutting-edge AI research with real-world impact</p>
+                    </div>
+                    <div class="speaking-item">
+                        <h4>🎙️ Speaker, The Wildlife Society – Virginia Chapter</h4>
+                        <p>Presented applied analytics and predictive modeling approaches for wildlife health monitoring and sustainable resource management.</p>
+                    </div>
+                    <div class="speaking-item">
+                        <h4>🤝 AI Ethics Contributor</h4>
+                        <p>Active contributor to AI ethics and governance discussions shaping responsible AI development.</p>
+                    </div>
+                    <div class="speaking-item">
+                        <h4>👥 Cross-functional Collaboration</h4>
+                        <p>Bridging teams across Marketing, Field Operations, Revenue, and IT for unified data strategies.</p>
+                    </div>
+                </div>
+                <div style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(255, 0, 110, 0.1)); border-radius: 12px; padding: 40px; text-align: center; border: 1px solid rgba(0, 217, 255, 0.2);">
+                    <h3 style="font-size: 48px; margin-bottom: 20px;">🚀</h3>
+                    <h4 style="color: var(--color-primary); font-size: 20px; margin-bottom: 15px;">Ready to Collaborate</h4>
+                    <p style="color: var(--color-text-secondary); line-height: 1.8;">Open to speaking engagements, collaboration opportunities, and discussions on AI, analytics, and RevOps strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CTA SECTION -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Let's Build Something Amazing Together</h2>
+                <p>Whether you're looking to transform your data strategy, build intelligent systems, or drive revenue growth - let's connect and explore possibilities.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:vs2530@nyu.edu" class="btn btn-primary">📧 Email Me</a>
+                    <a href="https://www.linkedin.com/in/vishal-shah1999/" target="_blank" class="btn btn-secondary">💼 LinkedIn</a>
+                    <a href="https://github.com/VishalShah1999" target="_blank" class="btn btn-secondary">💻 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Photo Upload Handler
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    
+                    const label = document.querySelector('.profile-photo');
+                    label.innerHTML = '';
+                    label.appendChild(img);
+                    label.style.cursor = 'default';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Scroll to section
+        function scrollToSection(selector) {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                scrollToSection(targetId);
+            });
+        });
+
+        // Add scroll animation to elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 0.8s ease forwards`;
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.strength-card, .project-card, .tech-category, .speaking-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
